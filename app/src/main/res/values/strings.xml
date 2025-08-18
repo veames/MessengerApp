@@ -17,4 +17,5 @@
     <string name="reset_link_sent">The reset link has been successfully sent</string>
     <string name="status_online">Online</string>
     <string name="status_offline">Offline</string>
+    <string name="et_hint_type_message">Message:</string>
 </resources>
