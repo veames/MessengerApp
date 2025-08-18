@@ -46,8 +46,12 @@ dependencies {
 
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
-//    implementation("com.google.firebase:firebase-auth")
+    // implementation("com.google.firebase:firebase-auth")
     implementation(libs.firebase.auth)
+
+    // Add the dependency for the Realtime Database library
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation(libs.firebase.database)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
