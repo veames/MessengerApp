@@ -80,7 +80,7 @@ public class ChatViewModel extends ViewModel {
         return error;
     }
 
-    public void setMessage(Message message) {
+    public void sendMessage(Message message) {
         referenceMessages
                 .child(message.getSenderId())
                 .child(message.getReceiverId())
