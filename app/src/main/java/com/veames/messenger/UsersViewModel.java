@@ -46,8 +46,10 @@ public class UsersViewModel extends ViewModel {
                     if (user == null) {
                         return;
                     }
-                    if (!user.getId().equals(currentUser.getUid())) {
-                        usersFromDb.add(user);
+                    if (user.getId() != null){
+                        if (!user.getId().equals(currentUser.getUid())){
+                            usersFromDb.add(user);
+                        }
                     }
                 }
                 users.setValue(usersFromDb);
@@ -66,6 +68,14 @@ public class UsersViewModel extends ViewModel {
         });
     }
 
+    public void setUserOnline(boolean isOnline) {
+        FirebaseUser firebaseUser = auth.getCurrentUser();
+        if (firebaseUser == null) {
+            return;
+        }
+        usersReference.child(firebaseUser.getUid()).child("online").setValue(isOnline);
+    }
+
     public LiveData<FirebaseUser> getUser() {
         return user;
     }
@@ -75,6 +85,7 @@ public class UsersViewModel extends ViewModel {
     }
 
     public void logout() {
+        setUserOnline(false);
         auth.signOut();
     }
 
