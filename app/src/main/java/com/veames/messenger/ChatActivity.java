@@ -67,12 +67,17 @@ public class ChatActivity extends AppCompatActivity {
         imageViewSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Message message = new Message(
-                        editTextMessage.getText().toString().trim(),
-                        currentUserId,
-                        otherUserId
-                );
-                viewModel.sendMessage(message);
+                String messageText = editTextMessage.getText().toString().trim();
+                if (messageText.isEmpty()) {
+                    return;
+                } else {
+                    Message message = new Message(
+                            messageText,
+                            currentUserId,
+                            otherUserId
+                    );
+                    viewModel.sendMessage(message);
+                }
             }
         });
     }
